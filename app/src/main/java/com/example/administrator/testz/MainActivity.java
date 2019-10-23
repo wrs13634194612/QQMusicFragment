@@ -2,31 +2,39 @@ package com.example.administrator.testz;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    TabLayout mTabLayout;
+    AppBarLayout mAppBarLayout;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewPager=findViewById(R.id.myViewPager);
+        viewPager = findViewById(R.id.myViewPager);
 
-        tabLayout=findViewById(R.id.myTabLayout);
+        tabLayout = findViewById(R.id.myTabLayout);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_contact_24dp));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_history_24dp));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_favorite_24dp));
         tabLayout.setSelectedTabIndicatorColor(Color.RED);
 
-        TabPagerAdapter tabPagerAdapter=new TabPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(tabPagerAdapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -53,25 +61,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    private class TabPagerAdapter extends FragmentPagerAdapter{
+    private class TabPagerAdapter extends FragmentPagerAdapter {
 
         private int tabCount;
 
         public TabPagerAdapter(FragmentManager fm, int tabCount) {
             super(fm);
-            this.tabCount=tabCount;
+            this.tabCount = tabCount;
         }
 
         @Override
         public Fragment getItem(int i) {
-            switch (i){
+            switch (i) {
                 case 0:
-                    return  new ContactFragment();
+                    return new ContactFragment();
                 case 1:
-                    return  new ContactHistoryFragment();
+                    return new ContactHistoryFragment();
                 case 2:
-                    return  new FavoriteFragment();
+                    return new FavoriteFragment();
             }
             return null;
         }

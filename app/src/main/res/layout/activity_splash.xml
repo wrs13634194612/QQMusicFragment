@@ -20,4 +20,12 @@
         android:text="仿照qq音乐侧边fragment"
         />
 
+
+    <Button
+        android:id="@+id/btn_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="listview样式仿照qq音乐侧边fragment"
+        />
+
 </LinearLayout>
